@@ -25,7 +25,9 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopra.formation.model.CreneauPraticien;
+import sopra.formation.model.Views;
 import sopra.formation.repository.ICreneauPraticienRepository;
+import sopra.formation.rest.exception.CreneauPraticienValidationException;
 
 
 @RestController
