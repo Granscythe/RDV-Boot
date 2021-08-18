@@ -34,19 +34,6 @@ public class RDVRestControlleur {
 	@Autowired
 	private IRDVRepository RDVRepo;
 
-	@GetMapping("/guest")
-	@JsonView(Views.ViewCommon.class)
-	public List<RDV> findAllGuest() {
-		return RDVRepo.findAll();
-	}
-	
-	@GetMapping("")
-	@JsonView(Views.ViewRDV.class)
-	//TODO @PreAuthorize("hasAnyRole('USER','ADMIN')")
-	public List<RDV> findAll() {
-		return RDVRepo.findAll();
-	}
-
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewRDV.class)
 	//TODO @PreAuthorize("hasAnyRole('USER','ADMIN')")
