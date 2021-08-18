@@ -5,10 +5,14 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Patient extends Personne{
+	@JsonView(Views.ViewCommon.class)
 	String numSecuriteSociale;
 	@OneToMany(mappedBy="patient")
+	@JsonView(Views.ViewPatient.class)
 	private List<RDV> rdvs;
 
 	public Patient(Long id, int version, String nom, String prenom, String mail, String mdp, String numSecuriteSociale,

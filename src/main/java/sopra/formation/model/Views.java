@@ -9,5 +9,6 @@ public class Views {
 	public static class ViewPersonne extends ViewCommon {}
 	
 	public static class ViewPraticien extends ViewPersonne {}
+	public static class ViewPatient {}
+	public static class ViewAdmin{}
 }
-
