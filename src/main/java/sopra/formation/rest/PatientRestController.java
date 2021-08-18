@@ -32,14 +32,14 @@ public class PatientRestController {
 	private IPatientRepository ueRepo;
 
 	@GetMapping("")
-	@JsonView(Views.Viewpatient.class)
+	@JsonView(Views.ViewPatient.class)
 	public List<Patient> findAll() {
 		return patientRepo.findAll();
 	}
 	
 
 	@GetMapping("/{id}")
-	@JsonView(Views.Viewpatient.class)
+	@JsonView(Views.ViewPatient.class)
 	public Patient find(@PathVariable Long id) {
 
 		Optional<Patient> optpatient = patientRepo.findById(id);
@@ -51,30 +51,9 @@ public class PatientRestController {
 		}
 	}
 	
-	@GetMapping("/{id}/ues")
-	@JsonView(Views.ViewUE.class)
-	public List<UE> findAllUEBypatient(@PathVariable Long id) {
-
-		List<UE> ues = ueRepo.findAllBypatient(id); 
-		
-		return ues;
-	}
-	
-	@GetMapping("/{id}/detail")
-	@JsonView(Views.Viewpatient.class)
-	public patient findWithDetail(@PathVariable Long id) {
-
-		Optional<patient> optpatient = patientRepo.findByIdWithStagiaire(id);
-	
-		if (optpatient.isPresent()) {
-			return optpatient.get();
-		} else {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
-		}
-	}
 
 	@PostMapping("")
-	@JsonView(Views.Viewpatient.class)
+	@JsonView(Views.ViewPatient.class)
 	public Patient create(@RequestBody Patient patient) {
 		patient = patientRepo.save(patient);
 
@@ -82,7 +61,7 @@ public class PatientRestController {
 	}
 
 	@PutMapping("/{id}")
-	@JsonView(Views.Viewpatient.class)
+	@JsonView(Views.ViewPatient.class)
 	public Patient update(@RequestBody Patient patient, @PathVariable Long id) {
 		if (!patientRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
