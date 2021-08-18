@@ -14,26 +14,35 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name="RDV")
 public class RDV {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Enumerated(EnumType.STRING)
+	@JsonView(Views.ViewCommon.class)
 	private Statut statut;
 	@ManyToOne
 	@JoinColumn(name="motifRDV")
+	@JsonView(Views.ViewRDV.class)
 	private Motif motif;
 	@ManyToOne
 	@JoinColumn(name="patient")
+	@JsonView(Views.ViewRDV.class)
 	private Patient patient;
 	@ManyToOne
 	@JoinColumn(name="praticien")
+	@JsonView(Views.ViewRDV.class)
 	private Praticien praticien;
 	@OneToMany(mappedBy = "rdv")
+	@JsonView(Views.ViewRDV.class)
 	private List<CreneauUnitaire> creneaux;
 	
 	
