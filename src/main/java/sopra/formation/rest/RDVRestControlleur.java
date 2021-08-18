@@ -17,13 +17,22 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import sopra.formation.model.RDV;
+import sopra.formation.model.Views;
+import sopra.formation.repository.IRDVRepository;
+import sopra.formation.rest.exception.RDVValidationException;
 
 @RestController
 @RequestMapping("/rdv")
 @CrossOrigin("*")
 public class RDVRestControlleur {
 	
-
+	@Autowired
+	private IRDVRepository RDVRepo;
 
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewRDV.class)
