@@ -5,20 +5,28 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Praticien extends Personne{
 	@OneToMany(mappedBy = "praticien")
+	@JsonView(Views.ViewPraticien.class)
 	private List<Motif> motifs;
 			
 	@OneToMany(mappedBy = "praticien")
+	@JsonView(Views.ViewPraticien.class)
 	private List<RDV> rdvs;
 	
 	@OneToMany(mappedBy = "praticien")
+	@JsonView(Views.ViewPraticien.class)
 	private List<CreneauPraticien> creneauPraticien;
 	
 	@OneToMany(mappedBy = "praticien")
+	@JsonView(Views.ViewPraticien.class)
 	private List<PraticienLieu> praticienLieu;
+	
 	@OneToMany(mappedBy = "praticien")
+	@JsonView(Views.ViewPraticien.class)
 	private List<SpecialitePraticien> specialite;
 
 	public Praticien() {
