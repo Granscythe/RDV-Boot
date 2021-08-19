@@ -17,40 +17,27 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import sopra.formation.model.RDV;
+import sopra.formation.model.Views;
+import sopra.formation.repository.IRDVRepository;
+import sopra.formation.rest.exception.RDVValidationException;
 
 @RestController
 @RequestMapping("/rdv")
 @CrossOrigin("*")
 public class RDVRestControlleur {
 	
+	@Autowired
+	private IRDVRepository RDVRepo;
 
-
-//	@GetMapping("/{id}")
-//	@JsonView(Views.ViewRDV.class)
-//	//TODO @PreAuthorize("hasAnyRole('USER','ADMIN')")
-//	public RDV find(@PathVariable Long id) {
-//
-//		Optional<RDV> optRDV = RDVRepo.findById(id);
-//
-//		if (optRDV.isPresent()) {
-//			return optRDV.get();
-//		} else {
-//			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
-//		}
-//	}
-//
-//	@PostMapping("")
-//	@JsonView(Views.ViewRDV.class)
-//	//TODO @PreAuthorize("hasRole('ADMIN')")
-//	public RDV create(@Valid @RequestBody RDV RDV, BindingResult result) {
-//		if(result.hasErrors()) {
-//			throw new RDVValidationException();
-//		}
-//		
-//		RDV = RDVRepo.save(RDV);
-//
-//		return RDV;
-//	}
+	@GetMapping("/{id}")
+	@JsonView(Views.ViewRDV.class)
+	//TODO @PreAuthorize("hasAnyRole('USER','ADMIN')")
+	public RDV find(@PathVariable Long id) {
 
 //	@PutMapping("/{id}")
 //	@JsonView(Views.ViewRDV.class)
@@ -90,14 +77,14 @@ public class RDVRestControlleur {
 //		return RDVFind;
 //	}
 
-//	@DeleteMapping("/{id}")
-//	//TODO @PreAuthorize("hasRole('ADMIN')")
-//	public void delete(@PathVariable Long id) {
-//		if (!RDVRepo.existsById(id)) {
-//			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
-//		}
-//		
-//		RDVRepo.deleteById(id);
-//	}
+	@DeleteMapping("/{id}")
+	//TODO @PreAuthorize("hasRole('ADMIN')")
+	public void delete(@PathVariable Long id) {
+		if (!RDVRepo.existsById(id)) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+		}
+		
+		RDVRepo.deleteById(id);
+	}
 
 }
