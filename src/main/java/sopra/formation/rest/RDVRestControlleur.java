@@ -55,7 +55,7 @@ public class RDVRestControlleur {
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewRDV.class)
 	//TODO @PreAuthorize("hasAnyRole('USER','ADMIN')")
-	public RDV find(@PathVariable Long id) {
+//	public RDV find(@PathVariable Long id) {
 
 		Optional<RDV> optRDV = RDVRepo.findById(id);
 
