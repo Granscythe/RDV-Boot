@@ -34,58 +34,23 @@ public class RDVRestControlleur {
 	@Autowired
 	private IRDVRepository RDVRepo;
 
-	@GetMapping("/guest")
-	@JsonView(Views.ViewCommon.class)
-	public List<RDV> findAllGuest() {
-		return RDVRepo.findAll();
-	}
-	
-	@GetMapping("")
-	@JsonView(Views.ViewRDV.class)
-	//TODO @PreAuthorize("hasAnyRole('USER','ADMIN')")
-	public List<RDV> findAll() {
-		return RDVRepo.findAll();
-	}
-
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewRDV.class)
 	//TODO @PreAuthorize("hasAnyRole('USER','ADMIN')")
 	public RDV find(@PathVariable Long id) {
 
-		Optional<RDV> optRDV = RDVRepo.findById(id);
-
-		if (optRDV.isPresent()) {
-			return optRDV.get();
-		} else {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
-		}
-	}
-
-	@PostMapping("")
-	@JsonView(Views.ViewRDV.class)
-	//TODO @PreAuthorize("hasRole('ADMIN')")
-	public RDV create(@Valid @RequestBody RDV RDV, BindingResult result) {
-		if(result.hasErrors()) {
-			throw new RDVValidationException();
-		}
-		
-		RDV = RDVRepo.save(RDV);
-
-		return RDV;
-	}
-
-	@PutMapping("/{id}")
-	@JsonView(Views.ViewRDV.class)
-	//TODO@PreAuthorize("hasRole('ADMIN')")
-	public RDV update(@RequestBody RDV RDV, @PathVariable Long id) {
-		if (!RDVRepo.existsById(id)) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
-		}
-
-		RDV = RDVRepo.save(RDV);
-
-		return RDV;
-	}
+//	@PutMapping("/{id}")
+//	@JsonView(Views.ViewRDV.class)
+//	//TODO@PreAuthorize("hasRole('ADMIN')")
+//	public RDV update(@RequestBody RDV RDV, @PathVariable Long id) {
+//		if (!RDVRepo.existsById(id)) {
+//			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+//		}
+//
+//		RDV = RDVRepo.save(RDV);
+//
+//		return RDV;
+//	}
 
 	//TODO Need patch ?
 //	@PatchMapping("/{id}")
