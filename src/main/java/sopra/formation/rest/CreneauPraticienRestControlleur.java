@@ -92,8 +92,8 @@ public class CreneauPraticienRestControlleur {
 		if (updates.containsKey("dtDebutPraticien")) {
 			creneauPraticienFind.setDtDebutPraticien((Date) updates.get("dtDebutPraticien"));
 		}
-		if (updates.containsKey("technique")) {
-			creneauPraticienFind.setDtFinPraticien((Date) updates.get("technique"));
+		if (updates.containsKey("dtFinPraticien")) {
+			creneauPraticienFind.setDtFinPraticien((Date) updates.get("dtFinPraticien"));
 		}
 
 		creneauPraticienFind = creneauPraticienRepo.save(creneauPraticienFind);
@@ -109,7 +109,4 @@ public class CreneauPraticienRestControlleur {
 		
 		creneauPraticienRepo.deleteById(id);
 	}
-}
-
-
 }
