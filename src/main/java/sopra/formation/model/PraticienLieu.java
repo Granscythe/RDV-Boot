@@ -7,16 +7,21 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class PraticienLieu {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@ManyToOne
     @JoinColumn(name = "lieu_id")
+	@JsonView(Views.ViewPraticienLieu.class)
     private Lieu lieu;
     @ManyToOne
     @JoinColumn(name = "praticien_id")
+    @JsonView(Views.ViewPraticienLieu.class)
     private Praticien praticien;
 	
     
