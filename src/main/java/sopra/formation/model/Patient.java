@@ -15,6 +15,11 @@ public class Patient extends Personne{
 	@JsonView(Views.ViewPatient.class)
 	private List<RDV> rdvs;
 
+	public Patient() {
+		super();
+	}
+
+
 	public Patient(Long id, int version, String nom, String prenom, String mail, String mdp, String numSecuriteSociale,
 			List<RDV> rdvs) {
 		super(id, version, nom, prenom, mail, mdp);
