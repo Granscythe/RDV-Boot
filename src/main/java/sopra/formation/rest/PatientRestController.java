@@ -28,9 +28,6 @@ public class PatientRestController {
 	@Autowired
 	private IPatientRepository patientRepo;
 	
-	@Autowired
-	private IPatientRepository ueRepo;
-
 	@GetMapping("")
 	@JsonView(Views.ViewPatient.class)
 	public List<Patient> findAll() {
