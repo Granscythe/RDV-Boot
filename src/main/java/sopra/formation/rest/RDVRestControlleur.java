@@ -25,45 +25,45 @@ public class RDVRestControlleur {
 	
 
 
-	@GetMapping("/{id}")
-	@JsonView(Views.ViewRDV.class)
-	//TODO @PreAuthorize("hasAnyRole('USER','ADMIN')")
-	public RDV find(@PathVariable Long id) {
+//	@GetMapping("/{id}")
+//	@JsonView(Views.ViewRDV.class)
+//	//TODO @PreAuthorize("hasAnyRole('USER','ADMIN')")
+//	public RDV find(@PathVariable Long id) {
+//
+//		Optional<RDV> optRDV = RDVRepo.findById(id);
+//
+//		if (optRDV.isPresent()) {
+//			return optRDV.get();
+//		} else {
+//			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+//		}
+//	}
+//
+//	@PostMapping("")
+//	@JsonView(Views.ViewRDV.class)
+//	//TODO @PreAuthorize("hasRole('ADMIN')")
+//	public RDV create(@Valid @RequestBody RDV RDV, BindingResult result) {
+//		if(result.hasErrors()) {
+//			throw new RDVValidationException();
+//		}
+//		
+//		RDV = RDVRepo.save(RDV);
+//
+//		return RDV;
+//	}
 
-		Optional<RDV> optRDV = RDVRepo.findById(id);
-
-		if (optRDV.isPresent()) {
-			return optRDV.get();
-		} else {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
-		}
-	}
-
-	@PostMapping("")
-	@JsonView(Views.ViewRDV.class)
-	//TODO @PreAuthorize("hasRole('ADMIN')")
-	public RDV create(@Valid @RequestBody RDV RDV, BindingResult result) {
-		if(result.hasErrors()) {
-			throw new RDVValidationException();
-		}
-		
-		RDV = RDVRepo.save(RDV);
-
-		return RDV;
-	}
-
-	@PutMapping("/{id}")
-	@JsonView(Views.ViewRDV.class)
-	//TODO@PreAuthorize("hasRole('ADMIN')")
-	public RDV update(@RequestBody RDV RDV, @PathVariable Long id) {
-		if (!RDVRepo.existsById(id)) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
-		}
-
-		RDV = RDVRepo.save(RDV);
-
-		return RDV;
-	}
+//	@PutMapping("/{id}")
+//	@JsonView(Views.ViewRDV.class)
+//	//TODO@PreAuthorize("hasRole('ADMIN')")
+//	public RDV update(@RequestBody RDV RDV, @PathVariable Long id) {
+//		if (!RDVRepo.existsById(id)) {
+//			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+//		}
+//
+//		RDV = RDVRepo.save(RDV);
+//
+//		return RDV;
+//	}
 
 	//TODO Need patch ?
 //	@PatchMapping("/{id}")
@@ -90,14 +90,14 @@ public class RDVRestControlleur {
 //		return RDVFind;
 //	}
 
-	@DeleteMapping("/{id}")
-	//TODO @PreAuthorize("hasRole('ADMIN')")
-	public void delete(@PathVariable Long id) {
-		if (!RDVRepo.existsById(id)) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
-		}
-		
-		RDVRepo.deleteById(id);
-	}
+//	@DeleteMapping("/{id}")
+//	//TODO @PreAuthorize("hasRole('ADMIN')")
+//	public void delete(@PathVariable Long id) {
+//		if (!RDVRepo.existsById(id)) {
+//			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+//		}
+//		
+//		RDVRepo.deleteById(id);
+//	}
 
 }
