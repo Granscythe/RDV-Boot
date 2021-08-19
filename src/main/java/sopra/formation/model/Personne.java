@@ -15,18 +15,18 @@ import com.fasterxml.jackson.annotation.JsonView;
 public abstract class Personne {
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
-	@JsonView(Views.ViewCommon.class)
+	@JsonView({Views.ViewCommon.class,Views.ViewAdmin.class})
 	private Long id;
 	@Version
-	@JsonView(Views.ViewCommon.class)
+	@JsonView({Views.ViewCommon.class,Views.ViewAdmin.class})
 	private int version;
-	@JsonView(Views.ViewCommon.class)
+	@JsonView({Views.ViewCommon.class,Views.ViewAdmin.class})
 	protected String nom;
-	@JsonView(Views.ViewCommon.class)
+	@JsonView({Views.ViewCommon.class,Views.ViewAdmin.class})
 	protected String prenom;
-	@JsonView(Views.ViewCommon.class)
+	@JsonView({Views.ViewCommon.class,Views.ViewAdmin.class})
 	protected String mail;
-	@JsonView(Views.ViewCommon.class)
+	@JsonView({Views.ViewCommon.class,Views.ViewAdmin.class})
 	protected String mdp;
 	
 	public Personne() {
