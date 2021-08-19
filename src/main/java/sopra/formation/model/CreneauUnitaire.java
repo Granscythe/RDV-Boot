@@ -13,24 +13,32 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class CreneauUnitaire {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
-	
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="DateDeDebutUnitaire")
+	@JsonView(Views.ViewCommon.class)
+//	@JsonFormat(pattern="dd-MM-yyyy")
 	private Date dtDebutUnitaire;
 	
 	@Column(name = "Duree")
+	@JsonView(Views.ViewCommon.class)
 	private Integer duree;
 	
 	@Column(name = "Statut")
+	@JsonView(Views.ViewCommon.class)
 	private boolean statut;
 	
 	@ManyToOne

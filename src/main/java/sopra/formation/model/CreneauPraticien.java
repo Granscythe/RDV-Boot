@@ -15,22 +15,31 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class CreneauPraticien {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="DateDeDebutPraticien")
+	@JsonView(Views.ViewCommon.class)
+//	@JsonFormat(pattern="dd-MM-yyyy")
 	private Date dtDebutPraticien;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="DateDeFinPraticien")
+//	@JsonFormat(pattern="dd-MM-yyyy")
+	@JsonView(Views.ViewCommon.class)
 	private Date dtFinPraticien;
 	
 	@ManyToOne
