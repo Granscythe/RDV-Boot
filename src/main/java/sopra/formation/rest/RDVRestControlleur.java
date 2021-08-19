@@ -45,7 +45,8 @@ public class RDVRestControlleur {
 //	public RDV update(@RequestBody RDV RDV, @PathVariable Long id) {
 //		if (!RDVRepo.existsById(id)) {
 //			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
-//		}
+//		}	@Autowired
+		private IRDVRepository RDVRepo;
 //
 //		RDV = RDVRepo.save(RDV);
 //
