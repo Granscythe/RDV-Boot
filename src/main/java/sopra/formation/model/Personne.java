@@ -28,10 +28,10 @@ public abstract class Personne {
 	protected String mail;
 	@JsonView({Views.ViewCommon.class,Views.ViewAdmin.class})
 	protected String mdp;
+	protected boolean enable;
 	
 	public Personne() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Personne(Long id, int version, String mail, String mdp) {
@@ -87,4 +87,13 @@ public abstract class Personne {
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
 	}
+
+	public boolean isEnable() {
+		return enable;
+	}
+
+	public void setEnable(boolean enable) {
+		this.enable = enable;
+	}
+	
 }
